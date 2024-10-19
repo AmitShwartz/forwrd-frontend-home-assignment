@@ -43,7 +43,7 @@ class UsersStore {
     ) {
       makePersistable(this, {
         name: 'UsersStore',
-        properties: ['users'],
+        properties: ['users', 'dirtyFields', 'errors'],
         storage: {
           getItem: (key) => localStorage.getItem(key),
           setItem: (key, value) => localStorage.setItem(key, value),
