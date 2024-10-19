@@ -50,11 +50,11 @@ You can choose any other state management solution you prefer instead of the bui
   - On change of each input, if invalid value has been entered, the field should have an 'error' state - it's border will become red (by passing error={true} prop to the input)
 
   - Validation rules for the task:
+
     - name should include only letters a-z (not case sensitive)
     - country should be one of the countries in the options provided
     - email - you can use an email validation regex, or for simplicity - email must contain exactly one '@' character
     - phone - must have a '+' character as first character, but only one '+' (for simplicity we won't check numeric characters etc)
-
 
   - Empty string also produces an error, but not at the first render, just after it had some value and it was deleted. So if I just added a new row, and didn't start typing anything, it will not be counted as an error for the error count.
 
@@ -64,7 +64,7 @@ You can choose any other state management solution you prefer instead of the bui
 
     Render a separate container beneath the users container and above the save button, which includes information counting the error types, like so: (you can design this as you wish)
 
-    ``"Errors: Empty Fields - 2, Invalid Fields - 5"``
+    `"Errors: Empty Fields - 2, Invalid Fields - 5"`
 
     It means there are 7 fields with red border overall, 5 of them include invalid content but not empty, 2 of them are empty.
 
@@ -87,11 +87,34 @@ You can choose any other state management solution you prefer instead of the bui
 - If you don't manage to show the data in a graphic solution as a pie chart, or you don't have enough time, the minimum requirement is to render a list of the countries we have - and render near each country a number of how many users are from this country.
 
 ### Bonus Round :)
+
 - Deploy your code to any platform you wish to be accessible from the web.
 
 ### General notes:
+
 - Make sure the code meets your standards (dont take the current code standards as guidelines/for granted) and allows you to express yourself. Feel free to make any changes to the existing code, changing the components implementation, changing passed props, css, and so on.
 - Using Vite is optional. Again - feel free to make any changes.
 - The suggested design and Look&Feel (mock) are also optional. You can follow it or design your own.
 - If there are any other changes or optimizations that you think are in place and it wasn't mentioned here, we would be glad for you to mention and explain 🤩
 
+### Process Experience and Changes
+
+- The overall assignment took approximately **13 hours**, including all bonus tasks.
+- I followed the existing design and aimed to retain the original design implementations, utilizing the provided libraries for the assignment.
+- Added error messages under each input field to enhance **user experience (UX)**.
+- Replaced the provided context with a **MobX store** for better logic control and readability.
+- If the assignment had involved a real API, I would have used **react-query** for handling http requests and maintain a single source of truth for user data updates.
+- I would prefer to implement it in TypeScript for better control of the types and code standard
+
+## Libraries Justification
+
+- **highcharts**, **highcharts-react-official**: Used for the pie chart on the statistics page.
+- **mobx-persist-store**: Used for data persistence in local storage.
+- **react-window**: For efficient handling of large lists.
+- **use-debounce**: Implements debouncing for search and `onChange` input events.
+- **uuid**: Used to generate unique IDs for new users.
+- **zod**: Used for validation schemas.
+
+## Contact
+
+For questions, feedback, or support, contact [Amit Shwartz](shwartzamit17@email.com).
