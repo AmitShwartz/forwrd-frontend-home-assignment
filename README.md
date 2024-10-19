@@ -101,6 +101,7 @@ You can choose any other state management solution you prefer instead of the bui
 
 - The overall assignment took approximately **13 hours**, including all bonus tasks.
 - I followed the existing design and aimed to retain the original design implementations, utilizing the provided libraries for the assignment.
+- Removed all `defaultProps` after getting warning message: ` Support for defaultProps will be removed from function components in a future major release. Use JavaScript default parameters instead. Error Component Stack`
 - Added error messages under each input field to enhance **user experience (UX)**.
 - In the Pie chart the number of users (as you requested) displayed when hovering above slices.
 - Replaced the provided context with a **MobX store** for better logic control and readability.
