@@ -115,6 +115,10 @@ You can choose any other state management solution you prefer instead of the bui
 - **uuid**: Used to generate unique IDs for new users.
 - **zod**: Used for validation schemas.
 
+### Bonus Round
+
+I wanted to deploy using Heroku (that i familiar with) but unfortunately they also started to asked for payment methods.
+
 ## Contact
 
 For questions, feedback, or support, contact [Amit Shwartz](shwartzamit17@email.com).
