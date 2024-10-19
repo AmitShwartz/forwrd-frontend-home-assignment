@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { colors } from '../../utils/colors.utils';
 
 const StyledButton = styled(Button)({
   boxShadow: 'none',
@@ -7,11 +8,11 @@ const StyledButton = styled(Button)({
   fontSize: 16,
   padding: '6px 12px',
   border: '1px solid',
-  backgroundColor: '#232d85',
+  backgroundColor: colors.deepBlue,
   '&:hover': {
-    backgroundColor: 'white',
-    borderColor: 'black',
-    color: 'black',
+    backgroundColor: colors.white,
+    borderColor: colors.black,
+    color: colors.black,
   },
 });
 
@@ -23,7 +24,6 @@ const PrimaryButton = ({ children, disabled, handleClick }) => {
   );
 };
 
-// TODO: Implement passed props
 PrimaryButton.defaultProps = {
   children: null,
   disabled: false,

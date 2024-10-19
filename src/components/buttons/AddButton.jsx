@@ -1,15 +1,16 @@
 import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import AddIcon from '@mui/icons-material/Add';
+import { colors } from '../../utils/colors.utils';
 
 const StyledAddButton = styled(Button)({
   boxShadow: 'none',
   textTransform: 'none',
   fontSize: 16,
-  padding: '6px 10px',
-  backgroundColor: '#3270ae',
+  padding: '8px 10px',
+  backgroundColor: colors.teal,
   '&:hover': {
-    backgroundColor: '#2989e8',
+    backgroundColor: colors.strongTeal,
   },
 });
 
@@ -21,7 +22,6 @@ const AddButton = ({ disabled, handleClick }) => {
   );
 };
 
-// TODO: Implement passed props
 AddButton.defaultProps = {
   disabled: false,
   handleClick: () => {},

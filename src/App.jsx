@@ -1,19 +1,26 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { StoreProvider } from './stores/setupContext';
 import NavBar from './components/NavBar';
-import StatisticsPage from './pages/statistics/StatisticsPage';
-import UsersPage from './pages/users/UsersPage';
-import { ContextProvider } from './context/usersContext';
+import { navBarRoutesConfig } from './config/routes.config';
+import useFetchUsers from './hooks/useFetchUsers';
 
 function App() {
+  useFetchUsers();
   return (
     <BrowserRouter>
       <NavBar />
-      <ContextProvider>
+      <StoreProvider>
         <Routes>
-          <Route path="/" exact element={<StatisticsPage />} />
-          <Route path="users" element={<UsersPage />} />
+          {navBarRoutesConfig.map(({ path, Element, exact }) => (
+            <Route
+              key={`Route-${path}`}
+              path={path}
+              element={<Element />}
+              exact={exact}
+            />
+          ))}
         </Routes>
-      </ContextProvider>
+      </StoreProvider>
     </BrowserRouter>
   );
 }

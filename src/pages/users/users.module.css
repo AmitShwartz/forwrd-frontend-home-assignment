@@ -35,6 +35,12 @@
   background-color: #1f2a62;
 }
 
+.usersListHeaderLeft {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .usersListContent {
   overflow: auto;
   height: calc(100% - 96px);
