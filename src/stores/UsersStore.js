@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash';
+import { isEmpty, uniq } from 'lodash';
 import { action, computed, makeObservable, observable } from 'mobx';
 import { makePersistable, PersistStoreMap } from 'mobx-persist-store';
 import { v4 as uuidv4 } from 'uuid';
@@ -7,6 +7,7 @@ const DAY_IN_MS = 24 * 60 * 60 * 1000;
 
 class UsersStore {
   users = {};
+  newUsers = {};
   isLoading = false;
   dirtyFields = {};
   errors = {};
@@ -15,6 +16,7 @@ class UsersStore {
   constructor() {
     makeObservable(this, {
       users: observable,
+      newUsers: observable,
       isLoading: observable,
       dirtyFields: observable,
       errors: observable,
@@ -34,6 +36,8 @@ class UsersStore {
       activeUsers: computed,
       usersIds: computed,
       IsNewInDirtyFields: computed,
+      newUsersArray: computed,
+      newAndCurrUsers: computed,
     });
 
     if (
@@ -43,7 +47,7 @@ class UsersStore {
     ) {
       makePersistable(this, {
         name: 'UsersStore',
-        properties: ['users', 'dirtyFields', 'errors'],
+        properties: ['users'],
         storage: {
           getItem: (key) => localStorage.getItem(key),
           setItem: (key, value) => localStorage.setItem(key, value),
@@ -67,10 +71,10 @@ class UsersStore {
       createdAt: new Date().getTime(),
     };
 
-    this.setUsers({
+    this.newUsers = {
+      ...this.newUsers,
       [user.id]: user,
-      ...this.users,
-    });
+    };
 
     this.dirtyFields = {
       ...this.dirtyFields,
@@ -85,7 +89,11 @@ class UsersStore {
   };
 
   removeUser = (userId) => {
-    this.setUsers({ ...this.users, [userId]: { ...this.users, isDeleted: true } });
+    if (this.newUsers[userId]) {
+      delete this.newUsers[userId];
+      this.newUsers = { ...this.newUsers };
+    } else this.setUsers({ ...this.users, [userId]: { ...this.users, isDeleted: true } });
+
     delete this.dirtyFields[userId];
     this.dirtyFields = { ...this.dirtyFields };
     delete this.errors[userId];
@@ -124,6 +132,7 @@ class UsersStore {
 
   resetDirtyFields = () => {
     this.dirtyFields = {};
+    this.newUsers = {};
   };
 
   setErrorsByUserIdAndField = (userId, field, error) => {
@@ -162,19 +171,33 @@ class UsersStore {
     return Object.values(this.users).filter(({ isDeleted }) => !isDeleted);
   }
 
+  get newUsersArray() {
+    return Object.values(this.newUsers);
+  }
+
+  get newAndCurrUsers() {
+    return {
+      ...this.newUsers,
+      ...this.users,
+    };
+  }
+
   get usersIds() {
-    return this.activeUsers
-      .filter((user) =>
+    const sortedIds = [
+      ...this.newUsersArray,
+      ...this.activeUsers.filter((user) =>
         Object.values(user)
           .join(' ')
           .toLowerCase()
           .includes(this.searchTerm.toLowerCase())
-      )
+      ),
+    ]
       .sort(
         ({ createdAt: aCreatedAt = 0 }, { createdAt: bCreatedAt = 0 }) =>
           bCreatedAt - aCreatedAt
       )
       .map(({ id }) => id);
+    return uniq(sortedIds);
   }
 
   get IsNewInDirtyFields() {

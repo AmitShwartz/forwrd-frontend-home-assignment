@@ -15,7 +15,7 @@ const CHANGE = 'change';
 
 const useUserRow = (userId) => {
   const {
-    users,
+    newAndCurrUsers,
     removeUser,
     addDirtyField,
     setErrorsByUserIdAndField,
@@ -27,8 +27,8 @@ const useUserRow = (userId) => {
   const isDirty = useMemo(() => !!userDirtyFields, [userDirtyFields]);
 
   const { name, country, email, phone } = useMemo(
-    () => users[userId] ?? {},
-    [users, userId]
+    () => newAndCurrUsers[userId] ?? {},
+    [newAndCurrUsers, userId]
   );
 
   const { errorName, errorCountry, errorEmail, errorPhone } = useMemo(

@@ -3,8 +3,14 @@ import { useCallback, useMemo } from 'react';
 import useUsersStore from './useUsersStore';
 
 const useSaveUsers = () => {
-  const { dirtyFields, errors, users, saveUsers, resetDirtyFields, IsNewInDirtyFields } =
-    useUsersStore();
+  const {
+    dirtyFields,
+    errors,
+    newAndCurrUsers,
+    saveUsers,
+    resetDirtyFields,
+    IsNewInDirtyFields,
+  } = useUsersStore();
 
   const disabled = useMemo(
     () => IsNewInDirtyFields || isEmpty(dirtyFields) || !isEmpty(errors),
@@ -14,7 +20,7 @@ const useSaveUsers = () => {
 
   const onSaveUsers = useCallback(() => {
     const usersToSave = Object.keys(dirtyFields).reduce((acc, userId) => {
-      const user = users[userId];
+      const user = newAndCurrUsers[userId];
       const dirtyFieldsForUser = dirtyFields[userId];
       const updatedUser = { ...user, ...dirtyFieldsForUser };
       acc[userId] = updatedUser;
@@ -23,7 +29,7 @@ const useSaveUsers = () => {
 
     saveUsers(usersToSave);
     resetDirtyFields();
-  }, [dirtyFields, resetDirtyFields, saveUsers, users]);
+  }, [dirtyFields, newAndCurrUsers, resetDirtyFields, saveUsers]);
 
   return {
     disabled,
