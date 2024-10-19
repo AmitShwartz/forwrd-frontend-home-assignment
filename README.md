@@ -97,7 +97,7 @@ You can choose any other state management solution you prefer instead of the bui
 - The suggested design and Look&Feel (mock) are also optional. You can follow it or design your own.
 - If there are any other changes or optimizations that you think are in place and it wasn't mentioned here, we would be glad for you to mention and explain 🤩
 
-### Process Experience and Changes
+## Process Experience and Changes
 
 - The overall assignment took approximately **13 hours**, including all bonus tasks.
 - I followed the existing design and aimed to retain the original design implementations, utilizing the provided libraries for the assignment.
@@ -106,7 +106,7 @@ You can choose any other state management solution you prefer instead of the bui
 - If the assignment had involved a real API, I would have used **react-query** for handling http requests and maintain a single source of truth for user data updates.
 - I would prefer to implement it in TypeScript for better control of the types and code standard
 
-## Libraries Justification
+### Libraries Justification
 
 - **highcharts**, **highcharts-react-official**: Used for the pie chart on the statistics page.
 - **mobx-persist-store**: Used for data persistence in local storage.
