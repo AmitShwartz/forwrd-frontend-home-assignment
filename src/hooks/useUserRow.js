@@ -109,6 +109,7 @@ const useUserRow = (userId) => {
     country: userDirtyFields?.country ?? country,
     email: userDirtyFields?.email ?? email,
     phone: userDirtyFields?.phone ?? phone,
+    handleRemoveUser,
     onChangeHandler,
     onBlurHandler,
     errorName,
