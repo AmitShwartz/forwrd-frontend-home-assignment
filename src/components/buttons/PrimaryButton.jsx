@@ -16,18 +16,12 @@ const StyledButton = styled(Button)({
   },
 });
 
-const PrimaryButton = ({ children, disabled, handleClick }) => {
+const PrimaryButton = ({ children, disabled = false, handleClick = () => {} }) => {
   return (
     <StyledButton variant="contained" disabled={disabled} onClick={handleClick}>
       {children}
     </StyledButton>
   );
-};
-
-PrimaryButton.defaultProps = {
-  children: null,
-  disabled: false,
-  handleClick: () => {},
 };
 
 export default PrimaryButton;

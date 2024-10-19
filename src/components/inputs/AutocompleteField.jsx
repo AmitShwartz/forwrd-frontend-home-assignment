@@ -14,13 +14,13 @@ const StyledAutocomplete = styled(Autocomplete)({
 });
 
 const AutocompleteField = ({
-  options,
-  onChangeHandler,
-  onBlurHandler,
-  error,
-  placeholder,
-  name,
-  value,
+  options = [],
+  onChangeHandler = () => {},
+  onBlurHandler = () => {},
+  error = null,
+  placeholder = 'Select...',
+  name = 'autocomplete_field_name',
+  value = null,
 }) => {
   const [optionValue, setOptionValue] = useState(value || null);
 
@@ -51,16 +51,6 @@ const AutocompleteField = ({
       />
     </InputErrorWrapper>
   );
-};
-
-AutocompleteField.defaultProps = {
-  options: [],
-  onChangeHandler: () => {},
-  onBlurHandler: () => {},
-  error: null,
-  placeholder: 'Select...',
-  name: 'autocomplete_field_name',
-  value: null,
 };
 
 export default AutocompleteField;

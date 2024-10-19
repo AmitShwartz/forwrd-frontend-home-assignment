@@ -12,13 +12,13 @@ const StyledTextField = styled(TextField)({
 });
 
 const InputField = ({
-  name,
-  value,
-  onChangeHandler,
-  error,
-  disabled,
-  placeholder,
-  onBlurHandler,
+  name = 'text_field_name',
+  value = '',
+  onChangeHandler = () => {},
+  error = null,
+  disabled = false,
+  placeholder = '',
+  onBlurHandler = () => {},
 }) => {
   const [inputValue, setInputValue] = useState(value);
 
@@ -54,15 +54,6 @@ const InputField = ({
       />
     </InputErrorWrapper>
   );
-};
-
-InputField.defaultProps = {
-  name: 'text_field_name',
-  value: '',
-  onChangeHandler: () => {},
-  error: null,
-  disabled: false,
-  placeholder: '',
 };
 
 export default InputField;

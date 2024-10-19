@@ -105,11 +105,10 @@ const useUserRow = (userId) => {
   );
 
   return {
-    name,
-    country,
-    email,
-    phone,
-    handleRemoveUser,
+    name: userDirtyFields?.name ?? name,
+    country: userDirtyFields?.country ?? country,
+    email: userDirtyFields?.email ?? email,
+    phone: userDirtyFields?.phone ?? phone,
     onChangeHandler,
     onBlurHandler,
     errorName,

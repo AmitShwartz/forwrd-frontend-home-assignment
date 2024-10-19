@@ -27,10 +27,4 @@ const InputErrorWrapper = ({ error, children }) => {
   );
 };
 
-// TODO: Implement passed props
-InputErrorWrapper.defaultProps = {
-  error: '',
-  children: null,
-};
-
 export default InputErrorWrapper;
