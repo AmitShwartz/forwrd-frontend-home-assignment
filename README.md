@@ -102,6 +102,7 @@ You can choose any other state management solution you prefer instead of the bui
 - The overall assignment took approximately **13 hours**, including all bonus tasks.
 - I followed the existing design and aimed to retain the original design implementations, utilizing the provided libraries for the assignment.
 - Added error messages under each input field to enhance **user experience (UX)**.
+- In the Pie chart the number of users (as you requested) displayed when hovering above slices.
 - Replaced the provided context with a **MobX store** for better logic control and readability.
 - If the assignment had involved a real API, I would have used **react-query** for handling http requests and maintain a single source of truth for user data updates.
 - I would prefer to implement it in TypeScript for better control of the types and code standard while avoiding mistakes.
