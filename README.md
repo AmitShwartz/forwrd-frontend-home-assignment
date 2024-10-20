@@ -119,7 +119,7 @@ You can choose any other state management solution you prefer instead of the bui
 
 ### Bonus Round
 
-I wanted to deploy using Heroku (that i familiar with) but unfortunately they also started to asked for payment methods.
+[Visit the app](https://lucky-profiterole-292dd3.netlify.app/)
 
 ## Contact
 
